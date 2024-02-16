@@ -38,13 +38,13 @@ class Sale(Base):
     __tablename__ = 'sale'
     id = sq.Column(sq.Integer, primary_key=True)
     price = sq.Column(sq.Float, nullable=False)
-    data_sale = sq.Column(sq.Date, nullable=False)
+    date_sale = sq.Column(sq.Date, nullable=False)
     id_stock = sq.Column(sq.Integer, sq.ForeignKey("stock.id"), nullable=False)
     count = sq.Column(sq.Integer, nullable=False)
     stock = relationship(Stock, backref="sales")
 
     def __str__(self):
-        return f'{self.stock.book.name}, {self.stock.shop.name}, {self.price}, {self.data_sale}'
+        return f'{self.stock.book.name}, {self.stock.shop.name}, {self.price}, {self.date_sale}'
 
 
 def create_tables(engine):
